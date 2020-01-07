@@ -1,0 +1,12 @@
+#ifndef GENERALAPI_GLOBAL_H
+#define GENERALAPI_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(GENERALAPI_LIBRARY)
+#  define GENERALAPI_EXPORT Q_DECL_EXPORT
+#else
+#  define GENERALAPI_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // GENERALAPI_GLOBAL_H

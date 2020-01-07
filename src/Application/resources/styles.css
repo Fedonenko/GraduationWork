@@ -1,0 +1,10 @@
+QWidget
+{
+    background: grey;
+}
+
+QMenuBar--QWidget#MenuBar
+{
+    border: 0.075em solid red;
+    border-radius: 0.3em ;
+}
