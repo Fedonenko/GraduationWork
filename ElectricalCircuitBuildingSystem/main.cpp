@@ -8,6 +8,9 @@ int main(int argc, char *argv[])
 
     Application app(argc, argv);
 
+    qDebug() << Application::applicationDirPath();
+
+
 #ifdef DEBUG
     qDebug() << "Hello Main!";
 #endif
