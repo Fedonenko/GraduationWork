@@ -5,15 +5,16 @@
 
 #include "MainWindow_global.h"
 
+#include "iactionsmenubar.h"
+
 //class QAction;
 
 namespace MainWindow {
 
-class IActionsMenuBar;
+//class IActionsMenuBar;
 
-class MAINWINDOW_EXPORT IActionMainWindow
+class IActionMainWindow
 {
-//    Q_OBJECT
 
 public:
     IActionMainWindow() = default;

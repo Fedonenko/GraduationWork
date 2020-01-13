@@ -6,7 +6,6 @@
 #include <QWidget>
 
 class QMenu;
-class QWidget;
 
 namespace Ui {
     class MenuBar;
@@ -21,7 +20,7 @@ class MenuBar : public QWidget
     Q_OBJECT
 
 public:
-    explicit MenuBar(IActionsMenuBar* actions/* = nullptr*/, QWidget *parent = nullptr);
+    explicit MenuBar(IActionsMenuBar* actions/* = nullptr*/, QWidget* parent = nullptr);
     ~MenuBar();
 
 public slots:

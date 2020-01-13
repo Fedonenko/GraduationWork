@@ -7,12 +7,13 @@
 
 #include "Application_global.h"
 //#include "../MainWindow/iactionmainwindow.h"
-//#include "mainwindow.h"
+//#include "iactionmainwindow.h"
 
 class MainApplicationWindow;
 
 namespace MainWindow {
     class IActionMainWindow;
+    class ElectronicComponentValueWindow;
 }
 
 class APPLICATION_EXPORT Application
@@ -23,8 +24,12 @@ public:
     Application(int, char*[]);
     ~Application();
 
+private slots:
+    void onResistorComponents();
+
 private:
     MainApplicationWindow* m_winui;
+    std::unique_ptr<MainWindow::ElectronicComponentValueWindow> m_componentWindow;
 
     std::unique_ptr<MainWindow::IActionMainWindow> m_actions;
     //MainWindow::IActionMainWindow* m_actions;
