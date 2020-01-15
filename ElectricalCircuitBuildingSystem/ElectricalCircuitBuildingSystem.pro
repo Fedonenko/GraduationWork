@@ -24,7 +24,7 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DESDIR = E:\Diploma\build-GraduationWork-Desktop_Qt_5_12_4_MinGW_64_bit-Debug\ElectricalCircuitBuildingSystem\debug
+DESDIR = E:\Diploma\build-GraduationWork-Desktop-Debug\ElectricalCircuitBuildingSystem\debug
 
 SUBDIRS += \
 
@@ -36,9 +36,9 @@ else:unix: LIBS += -L$$OUT_PWD/../src/Application/ -lApplication
 INCLUDEPATH += $$PWD/../src/Application
 DEPENDPATH += $$PWD/../src/Application
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../build-GraduationWork-Desktop_Qt_5_12_4_MinGW_64_bit-Debug/src/MainWindow/release/ -lMainWindow
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../build-GraduationWork-Desktop_Qt_5_12_4_MinGW_64_bit-Debug/src/MainWindow/debug/ -lMainWindow
-else:unix: LIBS += -L$$PWD/../../build-GraduationWork-Desktop_Qt_5_12_4_MinGW_64_bit-Debug/src/MainWindow/ -lMainWindow
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../build-GraduationWork-Desktop-Debug/src/MainWindow/release/ -lMainWindow
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../build-GraduationWork-Desktop-Debug/src/MainWindow/debug/ -lMainWindow
+else:unix: LIBS += -L$$PWD/../../build-GraduationWork-Desktop-Debug/src/MainWindow/ -lMainWindow
 
 INCLUDEPATH += $$PWD/../src/MainWindow
 DEPENDPATH += $$PWD/../src/MainWindow

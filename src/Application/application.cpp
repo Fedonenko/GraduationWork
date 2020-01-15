@@ -45,6 +45,10 @@ void Application::onResistorComponents()
 
     m_componentWindow->setWindowTitle(tr("Resistors"));
 
-    m_componentWindow->show();
+    if(m_componentWindow->isHidden())
+    {
+        m_componentWindow->show();
+    }
+
 }
 

@@ -26,7 +26,7 @@ win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../MainWindow/release/
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../MainWindow/debug/ -lMainWindow
 else:unix: LIBS += -L$$OUT_PWD/../MainWindow/ -lMainWindow
 
-DESDIR = E:\Diploma\build-GraduationWork-Desktop_Qt_5_12_4_MinGW_64_bit-Debug\ElectricalCircuitBuildingSystem\debug
+DESDIR = E:\Diploma\build-GraduationWork-Desktop-Debug\ElectricalCircuitBuildingSystem\debug
 
 INCLUDEPATH += $$PWD/../MainWindow
 DEPENDPATH += $$PWD/../MainWindow
@@ -43,9 +43,9 @@ HEADERS += \
     #$$PWD/../MainWindow/mainwindow.h
 
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../build-GraduationWork-Desktop_Qt_5_12_4_MinGW_64_bit-Debug/src/MainWindow/release/ -lMainWindow
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../build-GraduationWork-Desktop_Qt_5_12_4_MinGW_64_bit-Debug/src/MainWindow/debug/ -lMainWindow
-else:unix: LIBS += -L$$PWD/../../../build-GraduationWork-Desktop_Qt_5_12_4_MinGW_64_bit-Debug/src/MainWindow/ -lMainWindow
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../build-GraduationWork-Desktop-Debug/src/MainWindow/release/ -lMainWindow
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../build-GraduationWork-Desktop-Debug/src/MainWindow/debug/ -lMainWindow
+else:unix: LIBS += -L$$PWD/../../../build-GraduationWork-Desktop-Debug/src/MainWindow/ -lMainWindow
 
 INCLUDEPATH += $$PWD/../MainWindow
 DEPENDPATH += $$PWD/../MainWindow
