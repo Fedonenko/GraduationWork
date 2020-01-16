@@ -13,7 +13,16 @@ MainApplicationWindow::MainApplicationWindow(IActionMainWindow* actions, int wid
     initToolBar();
     initMenuBar();
 
+    m_draftWindow = new Draft::DraftWindow;
+    m_mdiArea = new QMdiArea;
+
+    m_mdiArea->addSubWindow(m_draftWindow);
+
+    setCentralWidget(m_mdiArea);
+
     resize(width, height);
+
+    m_draftWindow->show();
 }
 
 MainApplicationWindow::~MainApplicationWindow()

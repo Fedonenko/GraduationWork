@@ -4,6 +4,8 @@
 #include <QtWidgets>
 
 #include "MainWindow_global.h"
+#include "draftWindow.h"
+
 namespace MainWindow {
     class IActionMainWindow;
 }
@@ -28,6 +30,8 @@ private:
 
 private:
     MainWindow::IActionMainWindow* m_actions;
+    QMdiArea* m_mdiArea;
+    Draft::DraftWindow* m_draftWindow;
 
 };
 

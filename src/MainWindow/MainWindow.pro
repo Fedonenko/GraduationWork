@@ -46,3 +46,10 @@ unix {
 FORMS += \
     ui/electronicComponentValueWindow.ui \
     ui/menubar.ui
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../build-GraduationWork-Desktop-Debug/src/Draft/release/ -lDraft
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../build-GraduationWork-Desktop-Debug/src/Draft/debug/ -lDraft
+else:unix: LIBS += -L$$PWD/../../../build-GraduationWork-Desktop-Debug/src/Draft/ -lDraft
+
+INCLUDEPATH += $$PWD/../Draft
+DEPENDPATH += $$PWD/../Draft

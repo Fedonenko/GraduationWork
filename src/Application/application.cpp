@@ -13,7 +13,7 @@ Application::Application(int argc, char* argv[])
 
     {
         QString path {
-            "E:\\Diploma\\GraduationWork\\src\\Application\\resources\\styles.css"};
+            "E:\\My\\diploma\\GraduationWork.git\\trunk\\src\\Application\\resources\\styles.css"};
         QFile file(path);
         if(file.open(QIODevice::ReadOnly))
         {
