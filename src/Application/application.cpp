@@ -1,9 +1,7 @@
 #include "application.h"
-#include "../MainWindow/mainapplicationwindow.h"
-#include "../MainWindow/actionmainwindow.h"
-#include "../MainWindow/pluginComponentWindow/electroniccomponentvaluewindow.h"
-//#include "../MainWindow/iactionmainwindow.h"
-
+#include "mainapplicationwindow.h"
+#include "actionmainwindow.h"
+#include "pluginComponentWindow/electroniccomponentvaluewindow.h"
 
 Application::Application(int argc, char* argv[])
     : QApplication(argc, argv)
@@ -13,7 +11,7 @@ Application::Application(int argc, char* argv[])
 
     {
         QString path {
-            "E:\\My\\diploma\\GraduationWork.git\\trunk\\src\\Application\\resources\\styles.css"};
+            ":/styles.css"};
         QFile file(path);
         if(file.open(QIODevice::ReadOnly))
         {

@@ -2,7 +2,7 @@ QT += gui widgets core
 TEMPLATE = app
 
 
-CONFIG += c++1z #console
+CONFIG += c++1z warn_on  #console
 CONFIG -= app_bundle
 
 # The following define makes your compiler emit warnings if you use
@@ -24,8 +24,6 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DESDIR = E:\Diploma\build-GraduationWork-Desktop-Debug\ElectricalCircuitBuildingSystem\debug
-
 SUBDIRS += \
 
 
@@ -35,17 +33,3 @@ else:unix: LIBS += -L$$OUT_PWD/../src/Application/ -lApplication
 
 INCLUDEPATH += $$PWD/../src/Application
 DEPENDPATH += $$PWD/../src/Application
-
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../build-GraduationWork-Desktop-Debug/src/MainWindow/release/ -lMainWindow
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../build-GraduationWork-Desktop-Debug/src/MainWindow/debug/ -lMainWindow
-else:unix: LIBS += -L$$PWD/../../build-GraduationWork-Desktop-Debug/src/MainWindow/ -lMainWindow
-
-INCLUDEPATH += $$PWD/../src/MainWindow
-DEPENDPATH += $$PWD/../src/MainWindow
-
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../build-GraduationWork-Desktop-Debug/src/Draft/release/ -lDraft
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../build-GraduationWork-Desktop-Debug/src/Draft/debug/ -lDraft
-else:unix: LIBS += -L$$PWD/../../build-GraduationWork-Desktop-Debug/src/Draft/ -lDraft
-
-INCLUDEPATH += $$PWD/../src/Draft
-DEPENDPATH += $$PWD/../src/Draft

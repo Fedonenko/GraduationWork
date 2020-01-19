@@ -6,8 +6,6 @@
 #include <QApplication>
 
 #include "Application_global.h"
-//#include "../MainWindow/iactionmainwindow.h"
-//#include "iactionmainwindow.h"
 
 class MainApplicationWindow;
 

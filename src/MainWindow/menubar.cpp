@@ -11,30 +11,30 @@ using namespace MainWindow;
 
 QString pathToResources()
 {
-    return QString("E:\\My\\diploma\\GraduationWork.git\\trunk");
+    return QString(":/image");
 }
 
 QString pathToolsIMG()
 {
-    static const QString path{ QString("%1\\src\\MainWindow\\resources\\tools.svg").arg(pathToResources()) };
+    static const QString path{ QString("%1/tools.svg").arg(pathToResources()) };
     return path;
 }
 
 QString pathViewIMG()
 {
-    static const QString path{ QString("%1\\src\\MainWindow\\resources\\view.svg").arg(pathToResources()) };
+    static const QString path{ QString("%1/view.svg").arg(pathToResources()) };
     return path;
 }
 
 QString pathSettingIMG()
 {
-    static const QString path{ QString("%1\\src\\MainWindow\\resources\\setting_cogwheel_button.svg").arg(pathToResources()) };
+    static const QString path{ QString("%1/setting_cogwheel.svg").arg(pathToResources()) };
     return path;
 }
 
 QString pathAboutIMG()
 {
-    static const QString path{ QString("%1\\src\\MainWindow\\resources\\about.svg").arg(pathToResources()) };
+    static const QString path{ QString("%1/about.svg").arg(pathToResources()) };
     return path;
 }
 

@@ -6,7 +6,7 @@ using namespace MainWindow;
 
 QString pathResistorIMG()
 {
-    static const QString path("E:\\My\\diploma\\GraduationWork.git\\trunk\\src\\MainWindow\\resources\\resistor.svg");
+    static const QString path(":/image/resistor.svg");
     return path;
 }
 

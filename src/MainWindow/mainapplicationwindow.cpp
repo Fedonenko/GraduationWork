@@ -1,5 +1,5 @@
 #include "mainapplicationwindow.h"
-#include "ui/menubar.h"
+#include "menubar.h"
 #include "iactionmainwindow.h"
 
 using namespace MainWindow;

@@ -1,6 +1,10 @@
 QT += gui widgets
 
 TEMPLATE = lib
+win32:CONFIG(release, debug|release): DLLDESTDIR = ../../ElectricalCircuitBuildingSystem/release
+else:win32:CONFIG(debug, debug|release): DLLDESTDIR = ../../ElectricalCircuitBuildingSystem/debug
+else:unix: DLLDESTDIR = ../../ElectricalCircuitBuildingSystem
+
 DEFINES += DRAFT_LIBRARY
 
 CONFIG += c++1z
@@ -28,3 +32,4 @@ unix {
     target.path = /usr/lib
 }
 !isEmpty(target.path): INSTALLS += target
+ DESDIR = E:\Diploma

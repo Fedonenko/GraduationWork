@@ -1,6 +1,11 @@
 QT += core gui widgets
 
 TEMPLATE = lib
+
+win32:CONFIG(release, debug|release): DLLDESTDIR = ../../ElectricalCircuitBuildingSystem/release
+else:win32:CONFIG(debug, debug|release): DLLDESTDIR = ../../ElectricalCircuitBuildingSystem/debug
+else:unix: DLLDESTDIR = ../../ElectricalCircuitBuildingSystem
+
 DEFINES += APPLICATION_LIBRARY
 
 CONFIG += c++1z
@@ -26,36 +31,22 @@ win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../MainWindow/release/
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../MainWindow/debug/ -lMainWindow
 else:unix: LIBS += -L$$OUT_PWD/../MainWindow/ -lMainWindow
 
-DESDIR = E:\Diploma\build-GraduationWork-Desktop-Debug\ElectricalCircuitBuildingSystem\debug
 
 INCLUDEPATH += $$PWD/../MainWindow
 DEPENDPATH += $$PWD/../MainWindow
 
 SOURCES += \
     application.cpp \
-    #MainWindow/mainwindow.cpp \
-    #$$PWD/../MainWindow/mainwindow.cpp
 
 HEADERS += \
     Application_global.h \
     application.h \
-    #MainWindow/mainwindow.h \
-    #$$PWD/../MainWindow/mainwindow.h
-
-
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../build-GraduationWork-Desktop-Debug/src/MainWindow/release/ -lMainWindow
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../build-GraduationWork-Desktop-Debug/src/MainWindow/debug/ -lMainWindow
-else:unix: LIBS += -L$$PWD/../../../build-GraduationWork-Desktop-Debug/src/MainWindow/ -lMainWindow
-
-INCLUDEPATH += $$PWD/../MainWindow
-DEPENDPATH += $$PWD/../MainWindow
 
 DISTFILES += \
-    resources/styles.css \
-
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../build-GraduationWork-Desktop-Debug/src/Draft/release/ -lDraft
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../build-GraduationWork-Desktop-Debug/src/Draft/debug/ -lDraft
-else:unix: LIBS += -L$$PWD/../../../build-GraduationWork-Desktop-Debug/src/Draft/ -lDraft
+    #resources/styles.css \
 
 INCLUDEPATH += $$PWD/../Draft
 DEPENDPATH += $$PWD/../Draft
+
+RESOURCES += \
+    resources/resource.qrc

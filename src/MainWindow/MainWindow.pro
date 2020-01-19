@@ -1,6 +1,10 @@
 QT += core gui widgets
 
 TEMPLATE = lib
+win32:CONFIG(release, debug|release): DLLDESTDIR = ../../ElectricalCircuitBuildingSystem/release
+else:win32:CONFIG(debug, debug|release): DLLDESTDIR = ../../ElectricalCircuitBuildingSystem/debug
+else:unix: DLLDESTDIR = ../../ElectricalCircuitBuildingSystem
+
 DEFINES += MAINWINDOW_LIBRARY
 
 CONFIG += c++1z
@@ -22,7 +26,7 @@ SOURCES += \
     iactionmainwindow.cpp \
     mainapplicationwindow.cpp \
     pluginComponentWindow/electroniccomponentvaluewindow.cpp \
-    ui/menubar.cpp
+    menubar.cpp
 
 HEADERS += \
     MainWindow_global.h \
@@ -32,7 +36,7 @@ HEADERS += \
     iactionsmenubar.h \
     mainapplicationwindow.h \
     pluginComponentWindow/electroniccomponentvaluewindow.h \
-    ui/menubar.h
+    menubar.h
 
 SUBDIRS += \
     resources
@@ -47,9 +51,12 @@ FORMS += \
     ui/electronicComponentValueWindow.ui \
     ui/menubar.ui
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../build-GraduationWork-Desktop-Debug/src/Draft/release/ -lDraft
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../build-GraduationWork-Desktop-Debug/src/Draft/debug/ -lDraft
-else:unix: LIBS += -L$$PWD/../../../build-GraduationWork-Desktop-Debug/src/Draft/ -lDraft
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../Draft/release/ -lDraft
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../Draft/debug/ -lDraft
+else:unix: LIBS += -L$$OUT_PWD/../Draft/ -lDraft
 
 INCLUDEPATH += $$PWD/../Draft
 DEPENDPATH += $$PWD/../Draft
+
+RESOURCES += \
+    resources/resource.qrc
