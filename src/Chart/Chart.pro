@@ -5,7 +5,7 @@ win32:CONFIG(release, debug|release): DLLDESTDIR = ../../ElectricalCircuitBuildi
 else:win32:CONFIG(debug, debug|release): DLLDESTDIR = ../../ElectricalCircuitBuildingSystem/debug
 else:unix: DLLDESTDIR = ../../ElectricalCircuitBuildingSystem
 
-DEFINES += DRAFT_LIBRARY
+DEFINES += CHART_LIBRARY
 
 CONFIG += c++1z
 
@@ -21,11 +21,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    draftWindow.cpp
+    ChartWidget.cpp
 
 HEADERS += \
-    Draft_global.h \
-    draftWindow.h
+    ChartWidget.h \
+    Chart_global.h
 
 # Default rules for deployment.
 unix {

@@ -1,3 +1,5 @@
+#include <QDebug>
+
 #include "application.h"
 #include "mainapplicationwindow.h"
 #include "actionmainwindow.h"
@@ -8,6 +10,10 @@ Application::Application(int argc, char* argv[])
     , m_actions{ new MainWindow::ActionMainWindow() }//*/{ std::make_unique<MainWindow::ActionMainWindow>() }
 {
     //m_actions = new MainWindow::ActionMainWindow();
+
+#ifdef DEBUG
+    qDebug() << "Hello Application"
+#endif
 
     {
         QString path {

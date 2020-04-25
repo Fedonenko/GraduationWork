@@ -2,7 +2,7 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     Application \
-    Draft \
+    Chart \
     ElectronicComponent \
     GeneralAPI \
     MainWindow

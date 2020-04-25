@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 
 
 #ifdef DEBUG
-    qDebug() << "Hello Main!";
+    qDebug() << "Hello Main in DEBUG !";
 #endif
 
     return app.exec();

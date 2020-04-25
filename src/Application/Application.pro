@@ -45,8 +45,8 @@ HEADERS += \
 DISTFILES += \
     #resources/styles.css \
 
-INCLUDEPATH += $$PWD/../Draft
-DEPENDPATH += $$PWD/../Draft
+INCLUDEPATH += $$PWD/../Chart
+DEPENDPATH += $$PWD/../Chart
 
 RESOURCES += \
     resources/resource.qrc

@@ -51,12 +51,12 @@ FORMS += \
     ui/electronicComponentValueWindow.ui \
     ui/menubar.ui
 
-win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../Draft/release/ -lDraft
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../Draft/debug/ -lDraft
-else:unix: LIBS += -L$$OUT_PWD/../Draft/ -lDraft
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../Chart/release/ -lChart
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../Chart/debug/ -lChart
+else:unix: LIBS += -L$$OUT_PWD/../Chart/ -lChart
 
-INCLUDEPATH += $$PWD/../Draft
-DEPENDPATH += $$PWD/../Draft
+INCLUDEPATH += $$PWD/../Chart
+DEPENDPATH += $$PWD/../Chart
 
 RESOURCES += \
     resources/resource.qrc
