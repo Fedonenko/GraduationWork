@@ -1,11 +1,10 @@
 #include <QDebug>
+#include <QSplashScreen>
 
 #include "application.h"
 
 int main(int argc, char *argv[])
 {
-    //QApplication a(argc, argv);
-
     Application app(argc, argv);
 
     qDebug() << Application::applicationDirPath();

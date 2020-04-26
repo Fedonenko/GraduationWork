@@ -4,7 +4,7 @@
 #include <QtWidgets>
 
 #include "MainWindow_global.h"
-#include "ChartWidget.h"
+#include "chartwidget.h"
 
 namespace MainWindow {
     class IActionMainWindow;

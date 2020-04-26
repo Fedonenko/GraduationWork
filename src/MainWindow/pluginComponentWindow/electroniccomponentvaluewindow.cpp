@@ -8,3 +8,6 @@ ElectronicComponentValueWindow::ElectronicComponentValueWindow(QWidget* parent)
 {
     m_ui->setupUi(this);
 }
+
+ElectronicComponentValueWindow::~ElectronicComponentValueWindow()
+{}

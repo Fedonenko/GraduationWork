@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>styles.css</file>
+        <file>imageDownloadApp.jpg</file>
     </qresource>
 </RCC>

@@ -15,6 +15,9 @@ ActionMainWindow::ActionMainWindow()
 {
 }
 
+ActionMainWindow::~ActionMainWindow()
+{}
+
 IActionsMenuBar* ActionMainWindow::menuBar()
 {
     return m_menuBar.get();

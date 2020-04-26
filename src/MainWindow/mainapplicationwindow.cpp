@@ -14,15 +14,20 @@ MainApplicationWindow::MainApplicationWindow(IActionMainWindow* actions, int wid
     initMenuBar();
 
     m_chartWidget = new Chart::ChartWidget;
+    QHBoxLayout* layout = new QHBoxLayout;
+    layout->addWidget(new QLabel("Hello World!"));
+    m_chartWidget->setLayout(layout);
+
     m_mdiArea = new QMdiArea;
 
-    m_mdiArea->addSubWindow(m_chartWidget);
+    auto mdiSubWindow = m_mdiArea->addSubWindow(m_chartWidget, Qt::ToolTip);
 
     setCentralWidget(m_mdiArea);
 
     resize(width, height);
 
     m_chartWidget->show();
+    m_chartWidget->setWindowFlag(Qt::SubWindow);
 }
 
 MainApplicationWindow::~MainApplicationWindow()

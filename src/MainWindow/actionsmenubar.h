@@ -12,6 +12,7 @@ class ActionsMenuBar
 {
 public:
     ActionsMenuBar();
+    ~ActionsMenuBar();
 
 public:
     virtual QAction* resistor() override;

@@ -1,4 +1,4 @@
-#include "ChartWidget.h"
+#include "chartwidget.h"
 
 using namespace Chart;
 

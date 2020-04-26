@@ -18,6 +18,9 @@ ActionsMenuBar::ActionsMenuBar()
     m_resistor->setToolTip(QObject::tr("Resistor"));
 }
 
+ActionsMenuBar::~ActionsMenuBar()
+{}
+
 QAction* ActionsMenuBar::resistor()
 {
     return m_resistor.get();

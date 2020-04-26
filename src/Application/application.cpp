@@ -1,4 +1,5 @@
 #include <QDebug>
+#include <QSplashScreen>
 
 #include "application.h"
 #include "mainapplicationwindow.h"
@@ -7,9 +8,12 @@
 
 Application::Application(int argc, char* argv[])
     : QApplication(argc, argv)
-    , m_actions{ new MainWindow::ActionMainWindow() }//*/{ std::make_unique<MainWindow::ActionMainWindow>() }
+    , m_actions{ std::make_unique<MainWindow::ActionMainWindow>() }
 {
-    //m_actions = new MainWindow::ActionMainWindow();
+    QSplashScreen splashScreen(QPixmap(":/imageDownloadApp.jpg"));
+
+    splashScreen.show();
+    splashScreen.showMessage(tr("Подождите! Идёт загрузка приложения"), Qt::AlignJustify | Qt::AlignCenter, Qt::gray);
 
 #ifdef DEBUG
     qDebug() << "Hello Application"
@@ -31,6 +35,9 @@ Application::Application(int argc, char* argv[])
     }
 
     m_winui = new MainApplicationWindow( m_actions.get(), 320, 240);
+
+    splashScreen.finish(m_winui);
+
     m_winui->show();
 }
 
@@ -42,7 +49,7 @@ void Application::onResistorComponents()
 {
     if(!m_componentWindow.get())
     {
-        m_componentWindow.reset( new MainWindow::ElectronicComponentValueWindow());//std::make_unique<MainWindow::ElectronicComponentValueWindow>();
+        m_componentWindow = std::make_unique<MainWindow::ElectronicComponentValueWindow>();
     }
 
     assert(m_componentWindow.get());
@@ -53,6 +60,5 @@ void Application::onResistorComponents()
     {
         m_componentWindow->show();
     }
-
 }
 

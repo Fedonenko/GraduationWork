@@ -21,11 +21,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    ChartWidget.cpp
+    chartwidget.cpp
 
 HEADERS += \
-    ChartWidget.h \
-    Chart_global.h
+    Chart_global.h \
+    chartwidget.h
 
 # Default rules for deployment.
 unix {

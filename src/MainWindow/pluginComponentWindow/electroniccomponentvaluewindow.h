@@ -18,6 +18,7 @@ class MAINWINDOW_EXPORT ElectronicComponentValueWindow
 
 public:
     ElectronicComponentValueWindow(QWidget* parent = nullptr);
+    ~ElectronicComponentValueWindow();
 
 private:
     Ui::ElectronicComponentValueWindow* m_ui;

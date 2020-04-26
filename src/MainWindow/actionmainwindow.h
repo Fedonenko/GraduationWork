@@ -15,7 +15,7 @@ class MAINWINDOW_EXPORT ActionMainWindow
 {
 public:
     ActionMainWindow();
-    //~ActionMainWindow() = default;
+    ~ActionMainWindow() override;
 
     virtual IActionsMenuBar* menuBar() override;
 
