@@ -1,4 +1,4 @@
-QT += core gui widgets
+QT += core gui widgets sql
 
 TEMPLATE = lib
 win32:CONFIG(release, debug|release): DLLDESTDIR = ../../ElectricalCircuitBuildingSystem/release
@@ -21,11 +21,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    generalapi.cpp
+    abstractdataecomponent.cpp \
+    applicationdataecomponent.cpp \
+    dataecomponent.cpp \
+    generalapi.cpp \
+    userdataecomponent.cpp
 
 HEADERS += \
     GeneralAPI_global.h \
-    generalapi.h
+    abstractdataecomponent.h \
+    applicationdataecomponent.h \
+    dataecomponent.h \
+    generalapi.h \
+    idataecomponent.h \
+    userdataecomponent.h
 
 # Default rules for deployment.
 unix {

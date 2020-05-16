@@ -8,6 +8,7 @@
 #include "Application_global.h"
 
 class MainApplicationWindow;
+class GeneralAPI;
 
 namespace MainWindow {
     class IActionMainWindow;
@@ -30,7 +31,7 @@ private:
     std::unique_ptr<MainWindow::ElectronicComponentValueWindow> m_componentWindow;
 
     std::unique_ptr<MainWindow::IActionMainWindow> m_actions;
-    //MainWindow::IActionMainWindow* m_actions;
+    std::unique_ptr<GeneralAPI> m_generalAPI;
 };
 
 #endif // APPLICATION_H

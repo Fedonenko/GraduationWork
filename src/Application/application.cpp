@@ -1,14 +1,17 @@
+#include "application.h"
+
 #include <QDebug>
 #include <QSplashScreen>
 
-#include "application.h"
-#include "mainapplicationwindow.h"
-#include "actionmainwindow.h"
-#include "pluginComponentWindow/electroniccomponentvaluewindow.h"
+#include <generalapi.h>
+#include <mainapplicationwindow.h>
+#include <actionmainwindow.h>
+#include <pluginComponentWindow/electroniccomponentvaluewindow.h>
 
 Application::Application(int argc, char* argv[])
     : QApplication(argc, argv)
     , m_actions{ std::make_unique<MainWindow::ActionMainWindow>() }
+    , m_generalAPI{ std::make_unique<GeneralAPI>() }
 {
     QSplashScreen splashScreen(QPixmap(":/imageDownloadApp.jpg"));
 
@@ -31,7 +34,7 @@ Application::Application(int argc, char* argv[])
     }
 
     {
-        connect(m_actions->menuBar()->resistor(), &QAction::triggered, this, &Application::onResistorComponents);
+        assert(connect(m_actions->menuBar()->resistor(), &QAction::triggered, this, &Application::onResistorComponents));
     }
 
     m_winui = new MainApplicationWindow( m_actions.get(), 320, 240);
