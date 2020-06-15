@@ -13,7 +13,16 @@ GeneralAPI::~GeneralAPI()
 
 }
 
+Common::Components::IDataEComponent *GeneralAPI::dataComponents()
+{
+    if(!m_dataEComponents)
+    {
+        m_dataEComponents = std::make_unique<Common::Components::DataEComponent>();
+    }
+
+    return m_dataEComponents.get();
+}
+
 void GeneralAPI::init()
 {
-    m_dataEComponents = std::make_unique<Common::Components::DataEComponent>();
 }

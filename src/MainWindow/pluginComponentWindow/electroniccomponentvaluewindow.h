@@ -1,15 +1,21 @@
 #ifndef ELECTRONICCOMPONENTVALUEWINDOW_H
 #define ELECTRONICCOMPONENTVALUEWINDOW_H
 
-#include <QWidget>
-
 #include "MainWindow_global.h"
 
-namespace Ui {
+#include <memory>
+
+#include <QWidget>
+
+class QAbstractItemModel;
+
+namespace Ui
+{
     class ElectronicComponentValueWindow;
 }
 
-namespace  MainWindow {
+namespace  MainWindow
+{
 
 class MAINWINDOW_EXPORT ElectronicComponentValueWindow
         : public QWidget
@@ -17,11 +23,14 @@ class MAINWINDOW_EXPORT ElectronicComponentValueWindow
     Q_OBJECT
 
 public:
-    ElectronicComponentValueWindow(QWidget* parent = nullptr);
+    ElectronicComponentValueWindow( QAbstractItemModel* model, QWidget* parent = nullptr);
     ~ElectronicComponentValueWindow();
 
 private:
     Ui::ElectronicComponentValueWindow* m_ui;
+
+    QAbstractItemModel* m_model;
+
 };
 
 }

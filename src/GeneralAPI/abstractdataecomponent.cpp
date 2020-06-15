@@ -151,11 +151,31 @@ void AbstractDataEComponent::createDefaultComponentTables()
     QString fields;
 //resistor
     {
-    fields = QString("%1, %2, %3")
-            .arg("id INTEGER PRIMARY KEY AUTOINCREMENT")
-            .arg("resistance INTEGER")
-            .arg("voltage REAL")
-            .arg(QString("id_component INTEGER NOT NULL REFERENCES ") + settings::components() + "(id)");
+        fields = QString("%1, %2, %3")
+                .arg("id INTEGER PRIMARY KEY AUTOINCREMENT")
+                .arg("resistance INTEGER")
+                .arg("voltage REAL")
+                .arg(QString("id_component INTEGER NOT NULL REFERENCES ") + settings::components() + "(id)");
+
+        QString create = QString ("CREATE TABLE %1 (%2);")
+                .arg(resistor)
+                .arg(fields);
+
+        if(!sqlQuery.exec(create))
+        {
+            qDebug() << "Unable to create a table " << resistor;
+        }
+
+        QString insertF = "INSERT INTO resistor (resistance, voltage, id_component)"
+                         "%1, %2, %3);";
+        QString insert = insertF
+                .arg("10")
+                .arg("220")
+                .arg("0");
+        if(!sqlQuery.exec(insert))
+        {
+            qDebug() << "Unable to make insert operation " << resistor;
+        }
     }
 }
 

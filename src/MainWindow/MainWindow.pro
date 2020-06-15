@@ -1,4 +1,4 @@
-QT += core gui widgets
+QT += core gui widgets sql
 
 TEMPLATE = lib
 win32:CONFIG(release, debug|release): DLLDESTDIR = ../../ElectricalCircuitBuildingSystem/release
@@ -25,6 +25,7 @@ SOURCES += \
     actionsmenubar.cpp \
     iactionmainwindow.cpp \
     mainapplicationwindow.cpp \
+    pluginComponentWindow/electroniccomponentsmodel.cpp \
     pluginComponentWindow/electroniccomponentvaluewindow.cpp \
     menubar.cpp
 
@@ -35,6 +36,7 @@ HEADERS += \
     iactionmainwindow.h \
     iactionsmenubar.h \
     mainapplicationwindow.h \
+    pluginComponentWindow/electroniccomponentsmodel.h \
     pluginComponentWindow/electroniccomponentvaluewindow.h \
     menubar.h
 

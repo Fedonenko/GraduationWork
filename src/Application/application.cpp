@@ -7,11 +7,15 @@
 #include <mainapplicationwindow.h>
 #include <actionmainwindow.h>
 #include <pluginComponentWindow/electroniccomponentvaluewindow.h>
+#include <pluginComponentWindow/electroniccomponentsmodel.h>
 
 Application::Application(int argc, char* argv[])
     : QApplication(argc, argv)
+    , m_componentsWindow{ nullptr }
+    , m_componentsModel{ nullptr }
     , m_actions{ std::make_unique<MainWindow::ActionMainWindow>() }
     , m_generalAPI{ std::make_unique<GeneralAPI>() }
+
 {
     QSplashScreen splashScreen(QPixmap(":/imageDownloadApp.jpg"));
 
@@ -50,18 +54,25 @@ Application::~Application()
 
 void Application::onResistorComponents()
 {
-    if(!m_componentWindow.get())
+    if(!m_componentsWindow.get())
     {
-        m_componentWindow = std::make_unique<MainWindow::ElectronicComponentValueWindow>();
+        m_componentsWindow = std::make_unique<MainWindow::ElectronicComponentValueWindow>(m_componentsModel.get());
     }
 
-    assert(m_componentWindow.get());
+    assert(m_componentsWindow.get());
 
-    m_componentWindow->setWindowTitle(tr("Resistors"));
+    m_componentsWindow->setWindowTitle(tr("Resistors"));
 
-    if(m_componentWindow->isHidden())
+    if(m_componentsWindow->isHidden())
     {
-        m_componentWindow->show();
+        m_componentsWindow->show();
     }
+}
+
+void Application::init()
+{
+    m_componentsModel = std::make_unique<MainWindow::ElectronicComponentsModel>(m_generalAPI->dataComponents());
+
+    m_componentsWindow = std::make_unique<MainWindow::ElectronicComponentValueWindow>(m_componentsModel.get());
 }
 

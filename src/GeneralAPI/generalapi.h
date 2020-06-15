@@ -16,6 +16,9 @@ public:
     GeneralAPI();
     ~GeneralAPI();
 
+public:
+    Common::Components::IDataEComponent* dataComponents();
+
 private:
     void init();
 

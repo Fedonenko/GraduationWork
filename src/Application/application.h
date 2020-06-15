@@ -13,6 +13,7 @@ class GeneralAPI;
 namespace MainWindow {
     class IActionMainWindow;
     class ElectronicComponentValueWindow;
+    class ElectronicComponentsModel;
 }
 
 class APPLICATION_EXPORT Application
@@ -27,8 +28,12 @@ private slots:
     void onResistorComponents();
 
 private:
+    void init();
+
+private:
     MainApplicationWindow* m_winui;
-    std::unique_ptr<MainWindow::ElectronicComponentValueWindow> m_componentWindow;
+    std::unique_ptr<MainWindow::ElectronicComponentValueWindow> m_componentsWindow;
+    std::unique_ptr<MainWindow::ElectronicComponentsModel> m_componentsModel;
 
     std::unique_ptr<MainWindow::IActionMainWindow> m_actions;
     std::unique_ptr<GeneralAPI> m_generalAPI;
