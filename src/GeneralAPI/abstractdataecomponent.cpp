@@ -75,6 +75,15 @@ void AbstractDataEComponent::init()
     checkTables();
 }
 
+QSqlDatabase& AbstractDataEComponent::activeConnect()
+{
+    m_dataBase.setDatabaseName(pathDb() + nameDB());
+
+    qDebug() << m_dataBase.lastError();
+
+    return m_dataBase;
+}
+
 void AbstractDataEComponent::initDB()
 {
     QString path = pathDb();
@@ -96,7 +105,8 @@ void AbstractDataEComponent::checkTables()
 {
     const auto tableList = QStringList() << settings::components() << settings::componentGroups();
 
-    m_dataBase.setDatabaseName(pathDb() + nameDB());
+    activeConnect();
+
     QStringList dbTableList = m_dataBase.tables();
     QSqlQuery query(m_dataBase);
 
@@ -127,9 +137,32 @@ void AbstractDataEComponent::checkTables()
 
             auto queryString{ QString("CREATE TABLE %1 (%2);").arg(item).arg(fields) };
 
-            query.exec(queryString);
+            if(!query.exec(queryString))
+            {
+                qDebug() << "Unable to create a table";
+            }
         }
     }
+
+    //createDefaultComponentTables();
+
+
+    if(!query.exec("SELECT * FROM resistor;"))
+    {
+        qDebug() << "shoto neto";
+    }
+
+    QSqlRecord rec = query.record();
+
+    while (query.next())
+    {
+        qDebug() << "data in table "
+                 << query.value(0).toString()
+                 << query.value(rec.indexOf("resistance")).toString()
+                 << query.value(rec.indexOf("voltage")).toString();
+    }
+
+    //createDefaultComponentTables();
 }
 
 void AbstractDataEComponent::createDefaultComponentTables()
@@ -155,7 +188,8 @@ void AbstractDataEComponent::createDefaultComponentTables()
                 .arg("id INTEGER PRIMARY KEY AUTOINCREMENT")
                 .arg("resistance INTEGER")
                 .arg("voltage REAL")
-                .arg(QString("id_component INTEGER NOT NULL REFERENCES ") + settings::components() + "(id)");
+                //.arg(QString("id_component INTEGER NOT NULL REFERENCES ") + settings::components() + "(id)")
+                ;
 
         QString create = QString ("CREATE TABLE %1 (%2);")
                 .arg(resistor)
@@ -166,15 +200,18 @@ void AbstractDataEComponent::createDefaultComponentTables()
             qDebug() << "Unable to create a table " << resistor;
         }
 
-        QString insertF = "INSERT INTO resistor (resistance, voltage, id_component)"
-                         "%1, %2, %3);";
+        QString insertF = "INSERT INTO resistor (resistance, voltage)"
+                         " VALUES (%1, %2);";
         QString insert = insertF
                 .arg("10")
                 .arg("220")
-                .arg("0");
+                //.arg("0")
+                ;
         if(!sqlQuery.exec(insert))
         {
             qDebug() << "Unable to make insert operation " << resistor;
+
+            qDebug() << sqlQuery.lastError();
         }
     }
 }

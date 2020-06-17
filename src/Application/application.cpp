@@ -2,6 +2,7 @@
 
 #include <QDebug>
 #include <QSplashScreen>
+#include <QSqlError>
 
 #include <generalapi.h>
 #include <mainapplicationwindow.h>
@@ -43,6 +44,8 @@ Application::Application(int argc, char* argv[])
 
     m_winui = new MainApplicationWindow( m_actions.get(), 320, 240);
 
+    init();
+
     splashScreen.finish(m_winui);
 
     m_winui->show();
@@ -54,14 +57,13 @@ Application::~Application()
 
 void Application::onResistorComponents()
 {
-    if(!m_componentsWindow.get())
-    {
-        m_componentsWindow = std::make_unique<MainWindow::ElectronicComponentValueWindow>(m_componentsModel.get());
-    }
-
     assert(m_componentsWindow.get());
 
     m_componentsWindow->setWindowTitle(tr("Resistors"));
+
+    m_componentsModel->setTable("resistor");
+
+    qDebug() << "setTable(\"resistor\");" << m_componentsModel->lastError();
 
     if(m_componentsWindow->isHidden())
     {

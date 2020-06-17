@@ -20,7 +20,10 @@ class DataEComponent
 {
 public:
     DataEComponent();
-    ~DataEComponent();
+    virtual ~DataEComponent() override;
+
+    virtual QSqlDatabase& activeAppDB() override;
+    virtual QSqlDatabase& activeUserDB() override;
 
 private:
     void init();

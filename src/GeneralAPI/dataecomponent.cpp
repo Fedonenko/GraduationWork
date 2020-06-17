@@ -15,6 +15,16 @@ DataEComponent::DataEComponent()
 DataEComponent::~DataEComponent()
 {}
 
+QSqlDatabase& DataEComponent::activeAppDB()
+{
+    return m_applicationData->activeConnect();
+}
+
+QSqlDatabase& DataEComponent::activeUserDB()
+{
+    return m_userData->activeConnect();
+}
+
 void DataEComponent::init()
 {
     m_userData = std::make_unique<UserDataEComponent>();

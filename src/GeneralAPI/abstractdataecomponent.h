@@ -15,6 +15,7 @@ public:
     virtual QString nameDB() const;
     virtual QString pathDb() const;
     virtual void init();
+    QSqlDatabase& activeConnect();
 
 protected:
     void initDB();
