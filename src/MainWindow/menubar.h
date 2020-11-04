@@ -3,7 +3,7 @@
 
 #define DEBUG
 
-#include <QWidget>
+#include <gui/widget.h>
 
 class QMenu;
 
@@ -15,7 +15,7 @@ namespace MainWindow {
 
 class IActionsMenuBar;
 
-class MenuBar : public QWidget
+class MenuBar : public Widget
 {
     Q_OBJECT
 

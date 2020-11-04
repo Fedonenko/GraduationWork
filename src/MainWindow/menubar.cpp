@@ -1,9 +1,10 @@
+#include "menubar.h"
+
 #include <QAction>
 #include <QToolButton>
 #include <QSpacerItem>
 #include <QMenu>
 
-#include "menubar.h"
 #include "ui_menubar.h"
 #include "iactionsmenubar.h"
 
@@ -45,7 +46,7 @@ QString pathAboutIMG()
 //}
 
 MenuBar::MenuBar(IActionsMenuBar* actions, QWidget *parent)
-    : QWidget(parent)
+    : Widget(parent)
     , m_ui{ new Ui::MenuBar }
     , m_actions{ actions }
 {

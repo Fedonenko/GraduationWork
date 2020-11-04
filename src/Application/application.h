@@ -10,7 +10,8 @@
 class MainApplicationWindow;
 class GeneralAPI;
 
-namespace MainWindow {
+namespace MainWindow
+{
     class IActionMainWindow;
     class ElectronicComponentValueWindow;
     class ElectronicComponentsModel;

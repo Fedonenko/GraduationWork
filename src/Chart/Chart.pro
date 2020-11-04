@@ -33,3 +33,10 @@ unix {
 }
 !isEmpty(target.path): INSTALLS += target
  DESDIR = E:\Diploma
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../GeneralAPI/release/ -lGeneralAPI
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../GeneralAPI/debug/ -lGeneralAPI
+else:unix: LIBS += -L$$OUT_PWD/../GeneralAPI/ -lGeneralAPI
+
+INCLUDEPATH += $$PWD/../GeneralAPI
+DEPENDPATH += $$PWD/../GeneralAPI

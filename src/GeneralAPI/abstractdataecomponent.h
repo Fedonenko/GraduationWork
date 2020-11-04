@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QSqlDatabase>
+
 namespace Common::Components
 {
 

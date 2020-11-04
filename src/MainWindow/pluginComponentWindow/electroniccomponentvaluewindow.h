@@ -5,7 +5,7 @@
 
 #include <memory>
 
-#include <QWidget>
+#include <gui/widget.h>
 
 class QAbstractItemModel;
 
@@ -18,7 +18,7 @@ namespace  MainWindow
 {
 
 class MAINWINDOW_EXPORT ElectronicComponentValueWindow
-        : public QWidget
+        : public Widget
 {
     Q_OBJECT
 

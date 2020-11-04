@@ -24,7 +24,9 @@ SOURCES += \
     abstractdataecomponent.cpp \
     applicationdataecomponent.cpp \
     dataecomponent.cpp \
+    debugAPI/debugwindow.cpp \
     generalapi.cpp \
+    gui/widget.cpp \
     userdataecomponent.cpp
 
 HEADERS += \
@@ -32,7 +34,9 @@ HEADERS += \
     abstractdataecomponent.h \
     applicationdataecomponent.h \
     dataecomponent.h \
+    debugAPI/debugwindow.h \
     generalapi.h \
+    gui/widget.h \
     idataecomponent.h \
     userdataecomponent.h
 
@@ -41,3 +45,6 @@ unix {
     target.path = /usr/lib
 }
 !isEmpty(target.path): INSTALLS += target
+
+FORMS += \
+    ui/debugwidget.ui

@@ -2,13 +2,14 @@
 #define CHART_H
 
 #include <QWidget>
+#include <gui/widget.h>
 
 #include "Chart_global.h"
 
 namespace Chart{
 
 class CHART_EXPORT ChartWidget
-        : public QWidget
+        : public Widget
 {
     Q_OBJECT
 

@@ -31,7 +31,9 @@ MainApplicationWindow::MainApplicationWindow(IActionMainWindow* actions, int wid
 }
 
 MainApplicationWindow::~MainApplicationWindow()
-{}
+{
+
+}
 
 void MainApplicationWindow::slotNotImpl(){
     QMessageBox::information(nullptr, "Message", "Not Implemented");

@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QSplashScreen>
 #include <QSqlError>
+#include <QSqlRecord>
 
 #include <generalapi.h>
 #include <mainapplicationwindow.h>
@@ -53,6 +54,7 @@ Application::Application(int argc, char* argv[])
 
 Application::~Application()
 {
+    m_componentsWindow.reset();
 }
 
 void Application::onResistorComponents()
@@ -62,8 +64,25 @@ void Application::onResistorComponents()
     m_componentsWindow->setWindowTitle(tr("Resistors"));
 
     m_componentsModel->setTable("resistor");
+    m_componentsModel->select();
 
     qDebug() << "setTable(\"resistor\");" << m_componentsModel->lastError();
+    qDebug() << "ElectronicComponentsModel constructor after setTable \"resistor\""
+             << " Error Type: " << m_componentsModel->lastError().type()
+
+             << " is NoError: " << m_componentsModel->lastError().NoError
+             << " lastError().text(): " << m_componentsModel->lastError().text();
+
+    qDebug() << "record(0).value(0).toString(): " << m_componentsModel->record(0).value(0).toString();
+    qDebug() << "record(0).value(1).toString(): " << m_componentsModel->record(0).value(1).toString();
+    qDebug() << "record(0).value(2).toString(): " << m_componentsModel->record(0).value(2).toString();
+
+    qDebug();
+
+    qDebug() << "record(1).value(0).toString(): " << m_componentsModel->record(1).value(0).toString();
+    qDebug() << "record(1).value(1).toString(): " << m_componentsModel->record(1).value(1).toString();
+    qDebug() << "record(1).value(2).toString(): " << m_componentsModel->record(1).value(2).toString();
+
 
     if(m_componentsWindow->isHidden())
     {
@@ -74,6 +93,7 @@ void Application::onResistorComponents()
 void Application::init()
 {
     m_componentsModel = std::make_unique<MainWindow::ElectronicComponentsModel>(m_generalAPI->dataComponents());
+
 
     m_componentsWindow = std::make_unique<MainWindow::ElectronicComponentValueWindow>(m_componentsModel.get());
 }
