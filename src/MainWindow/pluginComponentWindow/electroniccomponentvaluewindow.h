@@ -27,7 +27,7 @@ public:
     ~ElectronicComponentValueWindow();
 
 private:
-    Ui::ElectronicComponentValueWindow* m_ui;
+    std::unique_ptr<Ui::ElectronicComponentValueWindow> m_ui;
 
     QAbstractItemModel* m_model;
 

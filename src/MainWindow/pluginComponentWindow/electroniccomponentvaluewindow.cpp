@@ -8,7 +8,7 @@ using namespace MainWindow;
 
 ElectronicComponentValueWindow::ElectronicComponentValueWindow(QAbstractItemModel* model, QWidget* parent)
     : Widget(parent)
-    , m_ui{ new Ui::ElectronicComponentValueWindow }
+    , m_ui{ std::make_unique<Ui::ElectronicComponentValueWindow>() }
     , m_model{ model }
 {
     m_ui->setupUi(this);
