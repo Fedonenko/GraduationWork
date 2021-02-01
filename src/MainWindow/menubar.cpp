@@ -56,9 +56,9 @@ MenuBar::MenuBar(IActionsMenuBar* actions, QWidget *parent)
     {
         QPixmap img(pathToolsIMG());
 
-        QAction* action = new QAction(img, QString("Tools"));
-        action->setToolTip("Tools");
-        action->setMenu(toolsMenu());
+//        QAction* action = new QAction(img, QString("Tools"));
+//        action->setToolTip("Tools");
+//        action->setMenu(toolsMenu());
 
         QToolButton* button = new QToolButton();
 
@@ -97,6 +97,7 @@ MenuBar::MenuBar(IActionsMenuBar* actions, QWidget *parent)
 
         QToolButton* button = new QToolButton();
 
+        button->setPopupMode(QToolButton::InstantPopup);
         button->setIcon(img);
         button->setToolTip("Setting");
         button->addAction(action);
@@ -113,9 +114,11 @@ MenuBar::MenuBar(IActionsMenuBar* actions, QWidget *parent)
 
         QToolButton* button = new QToolButton();
 
+        button->setPopupMode(QToolButton::InstantPopup);
         button->setIcon(img);
         button->setToolTip("About");
         button->addAction(action);
+        button->setMenu(aboutMenu());
 
         m_ui->layoutMenuButton->addWidget(button);
     }
@@ -136,7 +139,11 @@ void MenuBar::onResistor()
 
 QMenu* MenuBar::toolsMenu()
 {
-    auto menu = new QMenu();
+    if(m_toolsMenu)
+    {
+        return m_toolsMenu;
+    }
+    m_toolsMenu = new QMenu();
 
 //    auto resistor = new QAction(tr("Resistor"));
 //    resistor->setIcon(QPixmap(pathResistorIMG()));
@@ -146,8 +153,21 @@ QMenu* MenuBar::toolsMenu()
 
     auto capacitor = new QAction(tr("Capacitor"));
 
-    menu->addAction(m_actions->resistor());
-    menu->addAction(capacitor);
+    m_toolsMenu->addAction(m_actions->resistor());
+    m_toolsMenu->addAction(capacitor);
 
-    return menu;
+    return m_toolsMenu;
+}
+
+QMenu* MenuBar::aboutMenu()
+{
+    if(m_aboutMenu)
+    {
+        return m_aboutMenu;
+    }
+    m_aboutMenu = new QMenu;//(this);
+
+    m_aboutMenu->addAction(m_actions->arrayCreator());
+
+    return m_aboutMenu;
 }

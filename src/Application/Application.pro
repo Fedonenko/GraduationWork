@@ -58,3 +58,10 @@ else:unix: LIBS += -L$$OUT_PWD/../GeneralAPI/ -lGeneralAPI
 INCLUDEPATH += $$PWD/../GeneralAPI
 DEPENDPATH += $$PWD/../GeneralAPI
 
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../Dev/release/ -lDev
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../Dev/debug/ -lDev
+else:unix: LIBS += -L$$OUT_PWD/../Dev/ -lDev
+
+INCLUDEPATH += $$PWD/../Dev
+DEPENDPATH += $$PWD/../Dev
+

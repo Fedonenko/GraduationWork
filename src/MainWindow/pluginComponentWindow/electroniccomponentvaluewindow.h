@@ -11,7 +11,7 @@ class QAbstractItemModel;
 
 namespace Ui
 {
-    class ElectronicComponentValueWindow;
+class ElectronicComponentValueWindow;
 }
 
 namespace  MainWindow
@@ -23,7 +23,7 @@ class MAINWINDOW_EXPORT ElectronicComponentValueWindow
     Q_OBJECT
 
 public:
-    ElectronicComponentValueWindow( QAbstractItemModel* model, QWidget* parent = nullptr);
+    ElectronicComponentValueWindow(QAbstractItemModel* model, QWidget* parent = nullptr);
     ~ElectronicComponentValueWindow();
 
 private:

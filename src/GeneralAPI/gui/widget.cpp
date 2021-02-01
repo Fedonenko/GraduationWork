@@ -11,7 +11,7 @@ Widget::Widget(QWidget *parent, Qt::WindowFlags f)
 {    
     Q_ASSERT(connect(m_actionDebugWindow, &QAction::triggered, this, &Widget::showDebugWindow));
 
-    m_actionDebugWindow->setShortcut(Qt::CTRL + Qt::SHIFT + Qt::Key_Q);
+    //m_actionDebugWindow->setShortcut(Qt::CTRL + Qt::SHIFT + Qt::Key_Q);
     addAction(m_actionDebugWindow);
 
 }

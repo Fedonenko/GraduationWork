@@ -27,7 +27,7 @@ test_bd_generalAPI::~test_bd_generalAPI()
 
 void test_bd_generalAPI::test_case1()
 {
-
+    //QTest::qExec(&tc, argc, argv);
 }
 
 QTEST_APPLESS_MAIN(test_bd_generalAPI)

@@ -4,6 +4,7 @@
 #define DEBUG
 
 #include <gui/widget.h>
+#include <QPointer>
 
 class QMenu;
 
@@ -28,12 +29,15 @@ public slots:
 
 private:
     QMenu* toolsMenu();
+    QMenu* aboutMenu();
 
 private:
     Ui::MenuBar* m_ui;
 
     IActionsMenuBar* m_actions;
 
+    QPointer<QMenu> m_aboutMenu;
+    QPointer<QMenu> m_toolsMenu;
 };
 
 }

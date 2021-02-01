@@ -10,6 +10,7 @@
 #include <actionmainwindow.h>
 #include <pluginComponentWindow/electroniccomponentvaluewindow.h>
 #include <pluginComponentWindow/electroniccomponentsmodel.h>
+#include <ArrayCreatorByImage.h>
 
 Application::Application(int argc, char* argv[])
     : QApplication(argc, argv)
@@ -40,7 +41,8 @@ Application::Application(int argc, char* argv[])
     }
 
     {
-        assert(connect(m_actions->menuBar()->resistor(), &QAction::triggered, this, &Application::onResistorComponents));
+        Q_ASSERT(connect(m_actions->menuBar()->resistor(), &QAction::triggered, this, &Application::onResistorComponents));
+        Q_ASSERT(connect(m_actions->menuBar()->arrayCreator(), &QAction::triggered, this, &Application::onArrayCreator));
     }
 
     m_winui = new MainApplicationWindow( m_actions.get(), 320, 240);
@@ -90,10 +92,19 @@ void Application::onResistorComponents()
     }
 }
 
+void Application::onArrayCreator()
+{
+    if(!m_arrayCreatorWindow)
+    {
+        m_arrayCreatorWindow = new Dev::ArrayCreatorByImage(m_winui);
+    }
+
+    m_arrayCreatorWindow->show();
+}
+
 void Application::init()
 {
     m_componentsModel = std::make_unique<MainWindow::ElectronicComponentsModel>(m_generalAPI->dataComponents());
-
 
     m_componentsWindow = std::make_unique<MainWindow::ElectronicComponentValueWindow>(m_componentsModel.get());
 }

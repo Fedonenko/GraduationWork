@@ -12,7 +12,9 @@ public:
     IActionsMenuBar() = default;
     virtual ~IActionsMenuBar() = default;
 
-    virtual QAction* resistor() = 0;
+    virtual QAction* resistor() const = 0;
+
+    virtual QAction* arrayCreator() const = 0;
 
 };
 

@@ -13,15 +13,30 @@ QString pathResistorIMG()
 ActionsMenuBar::ActionsMenuBar()
     : IActionsMenuBar()
     , m_resistor{ std::make_unique<QAction>(QObject::tr("Resistor")) }
+    , m_arrayCreator{ std::make_unique<QAction>(QObject::tr("Array Creator")) }
 {
-    m_resistor->setIcon(QPixmap(pathResistorIMG()));
-    m_resistor->setToolTip(QObject::tr("Resistor"));
+    init();
 }
 
 ActionsMenuBar::~ActionsMenuBar()
 {}
 
-QAction* ActionsMenuBar::resistor()
+QAction* ActionsMenuBar::resistor() const
 {
+    Q_ASSERT(m_resistor);
+
     return m_resistor.get();
+}
+
+QAction* ActionsMenuBar::arrayCreator() const
+{
+    Q_ASSERT(m_arrayCreator);
+
+    return m_arrayCreator.get();
+}
+
+void ActionsMenuBar::init()
+{
+    m_resistor->setIcon(QPixmap(pathResistorIMG()));
+    m_resistor->setToolTip(QObject::tr("Resistor"));
 }

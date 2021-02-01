@@ -15,6 +15,9 @@ ElectronicComponentValueWindow::ElectronicComponentValueWindow(QAbstractItemMode
 
     m_ui->tableView->setModel(model);
 
+    setCursor(Qt::WaitCursor);
+//    unsetCursor();
+
     qDebug() << "model->data(model->index(0,0)).toString(): " << model->data(model->index(0,0)).toString();
     qDebug() << "model->data(model->index(0,1)).toString(): " << model->data(model->index(0,1)).toString();
     qDebug() << "model->data(model->index(0,2)).toString(): " << model->data(model->index(0,2)).toString();

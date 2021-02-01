@@ -1,5 +1,4 @@
-#ifndef ACTIONSMENUBAR_H
-#define ACTIONSMENUBAR_H
+#pragma once
 
 #include <memory>
 
@@ -15,14 +14,17 @@ public:
     ~ActionsMenuBar();
 
 public:
-    virtual QAction* resistor() override;
+    virtual QAction* resistor() const override;
+
+    virtual QAction* arrayCreator() const override;
+
+private:
+    void init();
 
 private:
     std::unique_ptr<QAction> m_resistor;
-    //QAction* m_resistor;
+    std::unique_ptr<QAction> m_arrayCreator;
 
 };
 
 }
-
-#endif // ACTIONSMENUBAR_H
