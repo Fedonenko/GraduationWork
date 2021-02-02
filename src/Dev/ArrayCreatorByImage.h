@@ -1,10 +1,10 @@
-#ifndef DEV_H
-#define DEV_H
+#pragma once
 
 #include "Dev_global.h"
 
 #include <memory>
 #include <QtWidgets>
+#include <Properties/PropertiesObject.h>
 
 namespace Ui
 {
@@ -16,6 +16,7 @@ namespace Dev
 
 class DEV_EXPORT ArrayCreatorByImage
         : public QWidget
+        , public Common::PropertiesObject
 {
     Q_OBJECT
 
@@ -29,4 +30,3 @@ private:
 };
 
 }
-#endif // DEV_H

@@ -21,6 +21,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Properties/ControlConnector.cpp \
+    Properties/PropertiesObject.cpp \
     abstractdataecomponent.cpp \
     applicationdataecomponent.cpp \
     dataecomponent.cpp \
@@ -31,6 +33,8 @@ SOURCES += \
 
 HEADERS += \
     GeneralAPI_global.h \
+    Properties/ControlConnector.h \
+    Properties/PropertiesObject.h \
     abstractdataecomponent.h \
     applicationdataecomponent.h \
     dataecomponent.h \
