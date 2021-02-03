@@ -29,20 +29,20 @@ void ControlConnector::setValue(const QVariant& val)
     m_control->setProperty(m_propertyName.constData(), val);
 }
 
-void ControlConnector::bind(PropertiesObject* page, QObject* control)
+void ControlConnector::bind(Common::PropertiesObject* page, QObject* control)
 {
     m_control = control;
     m_page = page;
     connect(page);
 }
 
-void ControlConnector::connect(PropertiesObject* page)
+void ControlConnector::connect(Common::PropertiesObject* page)
 {
     connectFromControl(page);
     connectToControl(page);
 }
 
-void ControlConnector::connectToControl(PropertiesObject* page)
+void ControlConnector::connectToControl(Common::PropertiesObject* page)
 {
 //    const QMetaObject* metaControl = m_control->metaObject();
     const QMetaObject* metaPage = page->object()->metaObject();
@@ -65,7 +65,7 @@ void ControlConnector::connectToControl(PropertiesObject* page)
         page->objectHelper(), metaSlotTo));
 }
 
-void ControlConnector::connectFromControl(PropertiesObject* page)
+void ControlConnector::connectFromControl(Common::PropertiesObject* page)
 {
     const QMetaObject* metaControl = m_control->metaObject();
     int index = metaControl->indexOfProperty(m_propertyName.constData());

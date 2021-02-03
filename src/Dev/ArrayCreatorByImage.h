@@ -20,13 +20,19 @@ class DEV_EXPORT ArrayCreatorByImage
 {
     Q_OBJECT
 
+    Q_PROPERTY(QString formattedArray READ formattedArray WRITE setFormattedArray NOTIFY formattedArrayChanged)
+
 public:
     ArrayCreatorByImage(QWidget* parent = nullptr);
     virtual ~ArrayCreatorByImage();
 
+    QString formattedArray() const;
+    Q_SLOT void setFormattedArray(const QString&);
+    Q_SIGNAL void formattedArrayChanged(const QString& value);
+
 private:
     std::unique_ptr<Ui::ArrayCreatorByImage> m_ui;
-//    Ui::ArrayCreatorByImage* m_ui;
+    QString m_formatedArray;
 };
 
 }

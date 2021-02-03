@@ -7,10 +7,12 @@
 #include <QVariant>
 #include <QSet>
 
+class ControlConnector;
+
 namespace Common
 {
 
-class ControlConnector;
+//class ControlConnector;
 class PropertiesObject;
 
 class PropertiesHelper

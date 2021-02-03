@@ -6,23 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>481</width>
-    <height>400</height>
+    <width>453</width>
+    <height>487</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>TextLabel</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <spacer name="horizontalSpacer_2">
+   <item row="0" column="5">
+    <spacer name="horizontalSpacer">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
@@ -44,11 +37,15 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="4">
-    <widget class="QLineEdit" name="lineEdit_2"/>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
    </item>
-   <item row="0" column="5">
-    <spacer name="horizontalSpacer">
+   <item row="0" column="1">
+    <spacer name="horizontalSpacer_2">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
@@ -60,13 +57,20 @@
      </property>
     </spacer>
    </item>
+   <item row="0" column="4">
+    <widget class="QLineEdit" name="lineEdit_2"/>
+   </item>
    <item row="1" column="0" colspan="6">
     <widget class="QSplitter" name="splitter">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
      <widget class="QGraphicsView" name="graphicsView"/>
-     <widget class="QTextBrowser" name="textBrowser"/>
+     <widget class="QTextEdit" name="textEdit">
+      <property name="dataKey" stdset="0">
+       <string notr="true">formattedArray</string>
+      </property>
+     </widget>
     </widget>
    </item>
   </layout>

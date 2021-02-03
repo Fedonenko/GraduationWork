@@ -1,12 +1,15 @@
 #pragma once
 
+#include "GeneralAPI_global.h"
+
 #include <QPointer>
 
 namespace Common
 {
 class PropertiesObject;
+}
 
-class ControlConnector
+class GENERALAPI_EXPORT ControlConnector
 {
 public:
     ControlConnector(const QByteArray& propetyName);
@@ -15,15 +18,14 @@ public:
 public:
     virtual QVariant value() const;
     virtual void setValue(const QVariant& val);
-    void bind(PropertiesObject* page, QObject* control);
-    virtual void connect(PropertiesObject* page);
-    virtual void connectToControl(PropertiesObject* page);
-    virtual void connectFromControl(PropertiesObject* page);
+    void bind(Common::PropertiesObject* page, QObject* control);
+    virtual void connect(Common::PropertiesObject* page);
+    virtual void connectToControl(Common::PropertiesObject* page);
+    virtual void connectFromControl(Common::PropertiesObject* page);
 
 protected:
     QByteArray m_propertyName;
     QPointer<QObject> m_control;
-    PropertiesObject* m_page;
+    Common::PropertiesObject* m_page;
 };
 
-}

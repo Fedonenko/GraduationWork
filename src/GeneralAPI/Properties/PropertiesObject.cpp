@@ -28,20 +28,33 @@ public:
 };
 Q_DECLARE_METATYPE(ControlConnector_QLineEdit);
 
-class ControlConnector_QRadioButton : public ControlConnector
+class ControlConnector_QTextEdit : public ControlConnector
 {
 public:
-    ControlConnector_QRadioButton() : ControlConnector("checked"){}
+    ControlConnector_QTextEdit() : ControlConnector("plainText") {}
+    virtual void connect(PropertiesObject* page)
+    {
+        Q_ASSERT(QObject::connect(m_control, SIGNAL(textChanged()), page->objectHelper(), SLOT(setDataFromControl())));
+        connectToControl(page);
+    }
 };
-Q_DECLARE_METATYPE(ControlConnector_QRadioButton);
+Q_DECLARE_METATYPE(ControlConnector_QTextEdit);
 
-bool registerStandardConnectors()
+//class ControlConnector_QRadioButton : public ControlConnector
+//{
+//public:
+//    ControlConnector_QRadioButton() : ControlConnector("checked"){}
+//};
+//Q_DECLARE_METATYPE(ControlConnector_QRadioButton);
+
+int registerStandardConnectors()
 {
-    qRegisterMetaType<ControlConnector_QLineEdit>();
-    qRegisterMetaType<ControlConnector_QCheckBox>();
-    qRegisterMetaType<ControlConnector_QRadioButton>();
+//    qRegisterMetaType<ControlConnector_QLineEdit>();
 
-    return true;
+//    qRegisterMetaType<ControlConnector_QCheckBox>();
+//    qRegisterMetaType<ControlConnector_QRadioButton>();
+
+    return qRegisterMetaType<ControlConnector_QTextEdit>();;
 }
 
 ////////////////////////////////////////////////////////////
@@ -265,7 +278,7 @@ void PropertiesObject::setDataToControl(const int signalIndex)
 //    const int index = object->senderSignalIndex();
 
     Q_ASSERT_X(-1 != signalIndex,"PropertyPage::setDataToControl()", "call only of signal");
-    QMetaProperty metaProperty = object()->metaObject()->property(signalIndex);
+//    QMetaProperty metaProperty = object()->metaObject()->property(signalIndex);
 
     QByteArray signalName = object()->metaObject()->method(signalIndex).name();
     QByteArray propertyName = signalName.left(signalName.lastIndexOf(s_changed));
@@ -280,7 +293,10 @@ QVariant PropertiesObject::propertyValue(const QByteArray& propertyName)
 
 ControlConnector* PropertiesObject::createControlConnectorByType(QObject* control)
 {
-    static bool inited = registerStandardConnectors();
+    static int inited = registerStandardConnectors();
+
+    Q_ASSERT(inited);
+
     const QMetaObject* metaObject = control->metaObject();
 
     const QByteArray controlClassName = metaObject->className();
@@ -292,10 +308,19 @@ ControlConnector* PropertiesObject::createControlConnectorByType(QObject* contro
     const int type = QMetaType::type(QByteArray("ControlBinding_") +
         controlClassNameParts.last());
 
-    if (type)
-    {
-        return  static_cast<ControlConnector*>(QMetaType::create(type));
-    }
+//    if (type)
+//    {
+        return  static_cast<ControlConnector*>(QMetaType::create(inited));
+//    }
+
+    QMetaType mType = QMetaType::fromName(QByteArray("ControlBinding_") +
+        controlClassNameParts.last());
+
+    int id = mType.id();
+
+    bool vakid = mType.isValid();
+
+    return  static_cast<ControlConnector*>(mType.create());
 
     return nullptr;
 }
