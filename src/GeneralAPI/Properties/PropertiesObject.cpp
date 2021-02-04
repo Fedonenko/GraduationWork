@@ -40,21 +40,21 @@ public:
 };
 Q_DECLARE_METATYPE(ControlConnector_QTextEdit);
 
-//class ControlConnector_QRadioButton : public ControlConnector
-//{
-//public:
-//    ControlConnector_QRadioButton() : ControlConnector("checked"){}
-//};
-//Q_DECLARE_METATYPE(ControlConnector_QRadioButton);
-
-int registerStandardConnectors()
+class ControlConnector_QRadioButton : public ControlConnector
 {
-//    qRegisterMetaType<ControlConnector_QLineEdit>();
+public:
+    ControlConnector_QRadioButton() : ControlConnector("checked"){}
+};
+Q_DECLARE_METATYPE(ControlConnector_QRadioButton);
 
-//    qRegisterMetaType<ControlConnector_QCheckBox>();
-//    qRegisterMetaType<ControlConnector_QRadioButton>();
+bool registerStandardConnectors()
+{
+    qRegisterMetaType<ControlConnector_QLineEdit>();
+    qRegisterMetaType<ControlConnector_QCheckBox>();
+    qRegisterMetaType<ControlConnector_QRadioButton>();
+    qRegisterMetaType<ControlConnector_QTextEdit>();
 
-    return qRegisterMetaType<ControlConnector_QTextEdit>();;
+    return true;
 }
 
 ////////////////////////////////////////////////////////////
@@ -69,58 +69,11 @@ PropertiesHelper::PropertiesHelper(PropertiesObject* pObject)
 }
 
 PropertiesHelper::~PropertiesHelper()
-{
-
-}
+{}
 
 void PropertiesHelper::setDataFromControl()
 {
     m_propertiesObject->setDataFromControl(sender());
-//    const QByteArray dataKey = /*sender()*/object->property("dataKey").toString().toLatin1();
-//    Q_ASSERT(!dataKey.isEmpty());
-
-//    if (m_fieldsBeingSet.contains(dataKey) || !m_bindings.contains(dataKey))
-//    {
-//        return;
-//    }
-
-//    ControlConnector* binding = m_bindings[dataKey];
-
-//    m_fieldsBeingSet.insert(dataKey);
-
-//    setPropertyValue(dataKey, binding->value());
-//    m_fieldsBeingSet.remove(dataKey);
-
-}
-
-void PropertiesHelper::setDataToControl(const QByteArray& dataKey)
-{
-//    if (key.isEmpty())
-//    {
-//        return;
-//    }
-
-//    for(QByteArray dataKey : m_bindings.keys())
-//    {
-//        if (!dataKey.startsWith(key))
-//        {
-//            continue;
-//        }
-
-//        if (m_fieldsBeingSet.contains(dataKey))
-//        {
-//            continue;
-//        }
-
-//        ControlConnector* binding = m_bindings[dataKey];
-
-//        m_fieldsBeingSet.insert(dataKey);
-
-//        binding->setValue(propertyValue(dataKey));
-
-//        m_fieldsBeingSet.remove(dataKey);
-//    }
-
 }
 
 void PropertiesHelper::setDataToControl()
@@ -128,16 +81,6 @@ void PropertiesHelper::setDataToControl()
     const static QByteArray s_changed{ "Changed" };
 
     m_propertiesObject->setDataToControl(senderSignalIndex());
-//    const int index = object->senderSignalIndex();
-
-//    Q_ASSERT_X(-1 != index,"PropertyPage::setDataToControl()", "call only of signal");
-//    QMetaProperty metaProperty = object()->metaObject()->property(index);
-
-//    QByteArray signalName = object()->metaObject()->method(index).name();
-//    QByteArray propertyName = signalName.left(signalName.lastIndexOf(s_changed));
-
-//    setDataToControl(propertyName);
-
 }
 
 
@@ -168,7 +111,6 @@ QObject* PropertiesObject::object()
 void PropertiesObject::setObject(QObject* object)
 {
     m_object = object;
-    //m_pHelper = std::make_unique<PropertiesHelper>(this);
 }
 
 QObject* PropertiesObject::objectHelper()
@@ -228,6 +170,7 @@ void PropertiesObject::addMetaDefaultProperty(const QByteArray& propertyName, co
 void PropertiesObject::setDataFromControl(QObject* object)
 {
     const QByteArray dataKey = /*sender()*/object->property("dataKey").toString().toLatin1();
+
     Q_ASSERT(!dataKey.isEmpty());
 
     if (m_fieldsBeingSet.contains(dataKey) || !m_bindings.contains(dataKey))
@@ -275,10 +218,8 @@ void PropertiesObject::setDataToControl(const QByteArray& key)
 void PropertiesObject::setDataToControl(const int signalIndex)
 {
     const static QByteArray s_changed{ "Changed" };
-//    const int index = object->senderSignalIndex();
 
-    Q_ASSERT_X(-1 != signalIndex,"PropertyPage::setDataToControl()", "call only of signal");
-//    QMetaProperty metaProperty = object()->metaObject()->property(signalIndex);
+    Q_ASSERT_X(-1 != signalIndex,"PropertiesObject::setDataToControl()", "invalid signal index");
 
     QByteArray signalName = object()->metaObject()->method(signalIndex).name();
     QByteArray propertyName = signalName.left(signalName.lastIndexOf(s_changed));
@@ -293,34 +234,25 @@ QVariant PropertiesObject::propertyValue(const QByteArray& propertyName)
 
 ControlConnector* PropertiesObject::createControlConnectorByType(QObject* control)
 {
-    static int inited = registerStandardConnectors();
+    static bool inited = registerStandardConnectors();
 
     Q_ASSERT(inited);
 
     const QMetaObject* metaObject = control->metaObject();
-
     const QByteArray controlClassName = metaObject->className();
-
     const QList<QByteArray> controlClassNameParts = controlClassName.split(':');
 
     Q_ASSERT(!controlClassNameParts.last().isEmpty());
 
-    const int type = QMetaType::type(QByteArray("ControlBinding_") +
+    QMetaType mType = QMetaType::fromName(QByteArray("ControlConnector_") +
         controlClassNameParts.last());
 
-//    if (type)
-//    {
-        return  static_cast<ControlConnector*>(QMetaType::create(inited));
-//    }
+    if (mType.isValid())
+    {
+       return static_cast<ControlConnector*>(mType.create());
+    }
 
-    QMetaType mType = QMetaType::fromName(QByteArray("ControlBinding_") +
-        controlClassNameParts.last());
-
-    int id = mType.id();
-
-    bool vakid = mType.isValid();
-
-    return  static_cast<ControlConnector*>(mType.create());
+    Q_ASSERT(mType.isValid());
 
     return nullptr;
 }

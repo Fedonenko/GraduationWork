@@ -28,7 +28,11 @@
     </spacer>
    </item>
    <item row="0" column="2">
-    <widget class="QLineEdit" name="lineEdit"/>
+    <widget class="QLineEdit" name="lineEdit">
+     <property name="dataKey" stdset="0">
+      <string notr="true">fieldHeight</string>
+     </property>
+    </widget>
    </item>
    <item row="0" column="3">
     <widget class="QLabel" name="label_2">
@@ -40,7 +44,7 @@
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>TextLabel</string>
+      <string>Field size  H  x W</string>
      </property>
     </widget>
    </item>
@@ -58,7 +62,11 @@
     </spacer>
    </item>
    <item row="0" column="4">
-    <widget class="QLineEdit" name="lineEdit_2"/>
+    <widget class="QLineEdit" name="lineEdit_2">
+     <property name="dataKey" stdset="0">
+      <string notr="true">fieldWidth</string>
+     </property>
+    </widget>
    </item>
    <item row="1" column="0" colspan="6">
     <widget class="QSplitter" name="splitter">

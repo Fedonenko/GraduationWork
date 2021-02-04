@@ -26,7 +26,6 @@ public:
 
 private Q_SLOTS:
     void setDataFromControl();
-    void setDataToControl(const QByteArray& dataKey);
     void setDataToControl();
 
 private:

@@ -13,6 +13,8 @@ ArrayCreatorByImage::ArrayCreatorByImage(QWidget* parent)
     init();
 
     setFormattedArray("Hello World!");
+    setFieldHeight("8");
+    setFieldWidth("8");
 }
 
 ArrayCreatorByImage::~ArrayCreatorByImage()
@@ -34,4 +36,36 @@ void ArrayCreatorByImage::setFormattedArray(const QString& value)
     m_formatedArray = value;
 
     emit formattedArrayChanged(value);
+}
+
+QString ArrayCreatorByImage::fieldHeight() const
+{
+    return m_fieldHeight;
+}
+
+void ArrayCreatorByImage::setFieldHeight(const QString& value)
+{
+    if(m_fieldHeight == value)
+    {
+        return;
+    }
+    m_fieldHeight = value;
+
+    emit fieldHeightChanged(value);
+}
+
+QString ArrayCreatorByImage::fieldWidth() const
+{
+    return m_fieldWidth;
+}
+
+void ArrayCreatorByImage::setFieldWidth(const QString& value)
+{
+    if(m_fieldWidth == value)
+    {
+        return;
+    }
+    m_fieldWidth = value;
+
+    emit fieldWidthChanged(value);
 }
