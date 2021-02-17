@@ -14,11 +14,17 @@ CONFIG += c++1z
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    ArrayCreatorByImage.cpp
+    ArrayCreatorByImage.cpp \
+    ArrayCreatorGItem.cpp \
+    BackgroundFieldGItem.cpp \
+    GraphicsScene.cpp
 
 HEADERS += \
     ArrayCreatorByImage.h \
-    Dev_global.h
+    ArrayCreatorGItem.h \
+    BackgroundFieldGItem.h \
+    Dev_global.h \
+    GraphicsScene.h
 
 # Default rules for deployment.
 unix {

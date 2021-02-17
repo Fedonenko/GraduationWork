@@ -1,5 +1,4 @@
-#ifndef CHART_H
-#define CHART_H
+#pragma once
 
 #include <QWidget>
 #include <gui/widget.h>
@@ -19,5 +18,3 @@ public:
 };
 
 }
-
-#endif // CHART_H

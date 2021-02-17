@@ -1,6 +1,10 @@
 #include "ArrayCreatorByImage.h"
 
 #include "ui_ArrayCreatorByImage.h"
+#include "GraphicsScene.h"
+#include "BackgroundFieldGItem.h"
+#include "GraphicsScene.h"
+#include "ArrayCreatorGItem.h"
 
 using namespace Dev;
 
@@ -11,6 +15,20 @@ ArrayCreatorByImage::ArrayCreatorByImage(QWidget* parent)
     m_ui->setupUi(this);
     PropertiesObject::setObject(this);
     init();
+
+    auto gScene = new GraphicsScene;
+    auto gItem = new ArrayCreatorGItem;
+
+    gScene->addItem(gItem);
+
+    m_ui->graphicsView->setScene(gScene);
+
+    auto scene = m_ui->graphicsView->scene();
+
+    if(scene)
+    {
+        qDebug() << "ok";
+    }
 
     setFormattedArray("Hello World!");
     setFieldHeight("8");
