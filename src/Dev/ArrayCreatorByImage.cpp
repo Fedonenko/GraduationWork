@@ -17,11 +17,12 @@ ArrayCreatorByImage::ArrayCreatorByImage(QWidget* parent)
     init();
 
     auto gScene = new GraphicsScene;
-    auto gItem = new ArrayCreatorGItem;
 
-    gScene->addItem(gItem);
+//    gScene->addItem(gItem);
 
-    m_ui->graphicsView->setScene(gScene);
+ //   gItem->setPos(0, 0);
+
+    //m_ui->graphicsView->setScene(gScene);
 
     auto scene = m_ui->graphicsView->scene();
 
@@ -30,9 +31,31 @@ ArrayCreatorByImage::ArrayCreatorByImage(QWidget* parent)
         qDebug() << "ok";
     }
 
-    setFormattedArray("Hello World!");
-    setFieldHeight("8");
-    setFieldWidth("8");
+    setFormattedArray("Hello ");
+
+	auto gItem = new ArrayCreatorGItem;
+
+
+    gScene->addItem(gItem);
+	m_ui->graphicsView->setScene(gScene);
+
+// 	auto gItem2 = new ArrayCreatorGItem;
+//     gScene->addItem(gItem2);
+    
+
+    m_ui->graphicsView->update();
+    m_ui->graphicsView->scene()->update();
+	setFormattedArray("Hello World!");
+	setFieldHeight("8");
+	setFieldWidth("8");
+
+
+	gItem->setPos(100, 300);
+
+	auto gItem2 = new ArrayCreatorGItem;
+	gScene->addItem(gItem2);
+    gItem2->setPos(300, 0);
+
 }
 
 ArrayCreatorByImage::~ArrayCreatorByImage()
@@ -63,6 +86,12 @@ QString ArrayCreatorByImage::fieldHeight() const
 
 void ArrayCreatorByImage::setFieldHeight(const QString& value)
 {
+    bool isNumber;
+    int number = value.toInt(&isNumber);
+
+    Q_ASSERT(isNumber);
+    Q_ASSERT(number > 0);
+
     if(m_fieldHeight == value)
     {
         return;
@@ -79,6 +108,12 @@ QString ArrayCreatorByImage::fieldWidth() const
 
 void ArrayCreatorByImage::setFieldWidth(const QString& value)
 {
+	bool isNumber;
+	int number = value.toInt(&isNumber);
+
+	Q_ASSERT(isNumber);
+	Q_ASSERT(number > 0);
+
     if(m_fieldWidth == value)
     {
         return;

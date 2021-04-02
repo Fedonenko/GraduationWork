@@ -25,7 +25,48 @@ void ArrayCreatorGItem::paint(QPainter* painter, const QStyleOptionGraphicsItem*
 
     painter->setPen(QPen{ Qt::blue, 0});
     painter->setBrush(Qt::yellow);
-    painter->drawRect(0, 0, 100, 100);
+
+    QPainterPath path;
+
+	QPainterPath path1;
+
+//     QPainterPath path2;
+//     path.addRect(50, 0, 100, 50);
+// 
+//     QPainterPath path3;
+//     path.addRect(0, 50, 50, 100);
+
+	path.addRect(0, 0, 50, 50);
+	path.addRect(0, 0, 50, 50);
+
+
+
+//     path.addRect(10, 1, 100, 100);
+
+    painter->drawPath(path);
+//    painter->drawRoundedRect(-10, -10, 20, 20, 5, 5);
+
+//     painter->drawRect(0, 0, 50, 50);
+// 	painter->restore();
+// 
+// 	painter->save();
+// 
+// 	painter->setPen(QPen{ Qt::blue, 0 });
+// 	painter->setBrush(Qt::yellow);
+// 
+//     painter->drawRect(50, 0, 100, 50);
+// 	painter->restore();
+// 
+// 	painter->save();
+// 
+// 	painter->setPen(QPen{ Qt::blue, 0 });
+// 	painter->setBrush(Qt::yellow);
+// 
+//     painter->drawRect(0, 50, 50, 100);
+// 	painter->restore();
+// 
+//     painter->drawRect(50, 50, 100, 100);
+//     painter->drawRect(0, 0, 100, 100);
 
     painter->restore();
 }
