@@ -14,6 +14,8 @@ class ChartWidget;
 namespace Chart
 {
 
+class ChartGraphicsScene;
+
 class CHART_EXPORT ChartWidget
         : public Widget
 {

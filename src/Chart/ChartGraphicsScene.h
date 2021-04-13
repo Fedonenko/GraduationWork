@@ -11,7 +11,7 @@ class ChartGraphicsScene
     Q_OBJECT
 
 public:
-    ChartGraphicsScene();
+    ChartGraphicsScene(QObject* parent = nullptr);
     virtual ~ChartGraphicsScene();
 };
 

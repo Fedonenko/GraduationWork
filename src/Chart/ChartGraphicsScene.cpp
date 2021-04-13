@@ -2,7 +2,8 @@
 
 using namespace Chart;
 
-ChartGraphicsScene::ChartGraphicsScene()
+ChartGraphicsScene::ChartGraphicsScene(QObject* parent)
+	: QGraphicsScene(parent)
 {
 
 }
