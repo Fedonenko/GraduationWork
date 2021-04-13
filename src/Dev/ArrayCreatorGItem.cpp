@@ -31,13 +31,15 @@ void ArrayCreatorGItem::paint(QPainter* painter, const QStyleOptionGraphicsItem*
 	QPainterPath path1;
 
 //     QPainterPath path2;
-//     path.addRect(50, 0, 100, 50);
+     path.addRect(50, 0, 100, 50);
 // 
 //     QPainterPath path3;
 //     path.addRect(0, 50, 50, 100);
+     path.closeSubpath();
+	path.addRect(0, 0, 50, 50);
+	path.closeSubpath();
 
-	path.addRect(0, 0, 50, 50);
-	path.addRect(0, 0, 50, 50);
+//	path.addRect(0, 0, 50, 50);
 
 
 

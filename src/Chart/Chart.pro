@@ -21,10 +21,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    ChartGraphicsScene.cpp \
+    EComponentGItem.cpp \
     chartwidget.cpp
 
 HEADERS += \
+    ChartGraphicsScene.h \
     Chart_global.h \
+    EComponentGItem.h \
     chartwidget.h
 
 # Default rules for deployment.
@@ -40,3 +44,6 @@ else:unix: LIBS += -L$$OUT_PWD/../GeneralAPI/ -lGeneralAPI
 
 INCLUDEPATH += $$PWD/../GeneralAPI
 DEPENDPATH += $$PWD/../GeneralAPI
+
+FORMS += \
+    ChartWidget.ui
