@@ -20,7 +20,7 @@ ChartWidget::ChartWidget()
     setWindowTitle(c_titleName);
 
     auto scene = new ChartGraphicsScene;
-    auto gItem = new EComponentGItem;
+    auto gItem = new EComponentGItem(Resistor());
 
     scene->addItem(gItem);
 
