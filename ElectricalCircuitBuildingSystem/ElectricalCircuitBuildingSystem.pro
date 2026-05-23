@@ -2,7 +2,7 @@ QT += gui widgets core
 TEMPLATE = app
 
 
-CONFIG += c++1z warn_on  #console
+CONFIG += c++20 warn_on  #console
 CONFIG -= app_bundle
 
 # The following define makes your compiler emit warnings if you use

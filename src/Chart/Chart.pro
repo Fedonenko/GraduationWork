@@ -7,7 +7,7 @@ else:unix: DLLDESTDIR = ../../ElectricalCircuitBuildingSystem
 
 DEFINES += CHART_LIBRARY
 
-CONFIG += c++1z
+CONFIG += c++20
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -36,7 +36,6 @@ unix {
     target.path = /usr/lib
 }
 !isEmpty(target.path): INSTALLS += target
- DESDIR = E:\Diploma
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../GeneralAPI/release/ -lGeneralAPI
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../GeneralAPI/debug/ -lGeneralAPI
