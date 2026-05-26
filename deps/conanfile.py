@@ -34,8 +34,13 @@ class KekProjectRecipe(ConanFile):
 
 		self.options["qt/*"].qtwebsockets = True
 		self.options["qt/*"].qtwebview = True
+		self.options["qt/*"].qtscxml = True
 
 		self.options["qt/*"].qtsvg = True
+		self.options["qt/*"].with_libjpeg = "libjpeg"
+		self.options["qt/*"].with_libpng = True
+		self.options["qt/*"].with_dbus = True
+
 		#self.options["qt/*"].with_vulkan = True
 		#self.options["qt/*"].qt5compat = True
 
